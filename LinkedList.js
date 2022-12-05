@@ -38,6 +38,28 @@ class linkedList {
         if (prev == null) return null;
         let aux = prev.next;
         prev.next = new node(value, aux);
+        this.size++;
+        return true;
+    }
+
+    remove() {
+        if (this.head == null) return null;
+        const n = this.head;
+        this.head = this.head.next;
+        this.size--;
+        return n;
+    }
+
+    removeIn(index) {
+        if (index === 0) {
+            this.remove();
+            return true;
+        }
+        let prev = this.getByIndex(index - 1);
+        if (prev == null) return null;
+        let current = prev.next;
+        prev.next = current.next;
+        this.size--;
         return true;
     }
 }
